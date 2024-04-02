@@ -2,6 +2,7 @@ import random
 import time
 import gspread
 import curses
+from rich.console import Console
 from google.oauth2.service_account import Credentials
 
 SCOPE = [
@@ -15,7 +16,12 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open("snake_highscore")
 
-# structur for the playground and food + snake are taken from Patrick Loebers youtube: https://www.youtube.com/watch?v=M_npdRYD4K0
+
+
+
+# structur for the playground and how to create snake and food
+# are taken from Patrick Loebers youtube: https://www.youtube.com/watch?v=M_npdRYD4K0
+
 # playground
 curses.initscr()
 win = curses.newwin(20, 60, 0, 0)
