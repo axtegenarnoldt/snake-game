@@ -35,5 +35,13 @@ while True:
     event = win.getch()
     if event == ('q'):
         break
+          elif event == curses.KEY_UP:
+        direction = 'UP'
+    elif event == curses.KEY_DOWN:
+        direction = 'DOWN'
+    elif event == curses.KEY_LEFT:
+        direction = 'LEFT'
+    elif event == curses.KEY_RIGHT:
+        direction = 'RIGHT'
 
       
