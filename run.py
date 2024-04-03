@@ -23,8 +23,8 @@ curses.initscr()
 win = curses.newwin(25, 60, 0, 0,)
 win.keypad(1)
 curses.noecho()
-curses.curs_set(0) #hide cursor
-win.border(0) #draws border
+curses.curs_set(0)
+win.border(0) 
 win.nodelay(True)
 
 snake = [(4, 4), (4, 3), (4, 2)]
