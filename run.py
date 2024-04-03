@@ -15,16 +15,16 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open("snake_highscore")
 
-# structur for the playground and how to create snake and food
-# are taken from Patrick Loebers youtube: https://www.youtube.com/watch?v=M_npdRYD4K0
+#structur for the playground and how to create snake and food
+#are taken from Patrick Loebers youtube: https://www.youtube.com/watch?v=M_npdRYD4K0
 
 # playground
 curses.initscr()
-win = curses.newwin(20, 60, 0, 0,)
+win = curses.newwin(25, 60, 0, 0,)
 win.keypad(1)
 curses.noecho()
-curses.curs_set(0) # hide cursor
-win.border(0) # draws border
+curses.curs_set(0) #hide cursor
+win.border(0) #draws border
 win.nodelay(True)
 
 snake = [(4, 4), (4, 3), (4, 2)]
