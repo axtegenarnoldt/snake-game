@@ -2,7 +2,6 @@ import random
 import time
 import gspread
 import curses
-from rich.console import Console
 from google.oauth2.service_account import Credentials
 
 SCOPE = [
