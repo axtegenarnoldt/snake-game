@@ -20,24 +20,27 @@ SHEET = GSPREAD_CLIENT.open("snake_highscore")
 
 # playground
 curses.initscr()
-win = curses.newwin(25, 60, 0, 0,)
+win = curses.newwin(25, 60, 0, 0)
 win.keypad(1)
 curses.noecho()
 curses.curs_set(0)
 win.border(0) 
-win.nodelay(True)
+win.nodelay(1)
 
-snake = [(4, 4), (4, 3), (4, 2)]
+# snake and food
+snake = [(5, 4), (4, 3), (4, 2)]
 food = (6, 6)
 
-win.addch(food[0], food[1], '#')
-win.addch(snake[0][0], snake[0][1], '=')
+  win.addch(food[0], food[1], '#')
+  win.addch(snake[0][0], snake[0][1], '=')
+
+
 
 while True:
     event = win.getch()
     if event == ('s'):
      event = win.getch()
-     if event == ('q'):
+     if event == ('Q'):
         break
     elif event == curses.KEY_UP:
         direction = 'UP'
@@ -47,6 +50,12 @@ while True:
         direction = 'LEFT'
     elif event == curses.KEY_RIGHT:
         direction = 'RIGHT'
+
+  
+
+curses.endwin()
+
+
 
 
 
