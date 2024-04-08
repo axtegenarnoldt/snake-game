@@ -27,20 +27,24 @@ curses.curs_set(0)
 win.border(0) 
 win.nodelay(1)
 
+Score = 0
+
 # snake and food
 snake = [(5, 4), (4, 3), (4, 2)]
 food = (6, 6)
 
-  win.addch(food[0], food[1], '#')
-  win.addch(snake[0][0], snake[0][1], '=')
+win.addch(food[0], food[1], '#')
+win.addch(snake[0][0], snake[0][1], '=')
 
 
-
+    
 while True:
+     win.addstr(0, 2, 'score ' + str(score) + '')
+     win.refresh()
+     time.sleep(0.1)
+
     event = win.getch()
-    if event == ('s'):
-     event = win.getch()
-     if event == ('Q'):
+    if event == ('q'):
         break
     elif event == curses.KEY_UP:
         direction = 'UP'
@@ -50,8 +54,6 @@ while True:
         direction = 'LEFT'
     elif event == curses.KEY_RIGHT:
         direction = 'RIGHT'
-
-  
 
 curses.endwin()
 
