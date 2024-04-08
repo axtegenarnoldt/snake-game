@@ -1,6 +1,7 @@
 import random
 import time
 import gspread
+import os
 import curses
 from google.oauth2.service_account import Credentials
 
@@ -22,14 +23,12 @@ WINDOW_WIDTH = 60  # number of columns of window box
 WINDOW_HEIGHT = 20 # number of rows of window box 
 
 # playground
-def main(win):
+def main_game(win):
     curses.initscr()
-    win = curses.newwin(WINDOW_HEIGHT, WINDOW_WIDTH, 0, 0)
-    win.keypad(1)
-    curses.noecho()
-    curses.curs_set(0)
-    win.border(0) 
-    win.nodelay(1)
+    game_area = curses.newwin(WINDOW_HEIGHT, WINDOW_WIDTH, 0, 0)
+    game_area.keypad(1)
+    game_area.nodelay(1)
+    game_area.timeout(100)
 
     Score = 0
 
@@ -63,7 +62,7 @@ def main(win):
 
         # Directions to move the snake
         y = snake[0][0]
-        x = snake[0][1] 
+        x = snake[0][1]
         if direction == 'DOWN':
             y += 1
         if direction == 'UP':
@@ -96,10 +95,4 @@ def main(win):
     curses.endwin()
 
 if __name__ == "__main__":
- curses.wrapper(main)
-
-
-
-
-
-      
+ curses.wrapper(main_game)
