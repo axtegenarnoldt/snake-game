@@ -36,6 +36,8 @@ food = (6, 6)
 win.addch(food[0], food[1], '#')
 win.addch(snake[0][0], snake[0][1], '=')
 
+# Inital direction of the snake
+direction = 'RIGHT'
 
     
 while True:
@@ -43,6 +45,7 @@ while True:
      win.refresh()
      time.sleep(0.1)
 
+   #Handel user input
     event = win.getch()
     if event == ('q'):
         break
@@ -55,6 +58,16 @@ while True:
     elif event == curses.KEY_RIGHT:
         direction = 'RIGHT'
 
+    if direction == 'UP':
+        snake.insert(0, (snake[0][0] -1, snake[0][1]))
+    elif direction == 'DOWN':
+        snake.insert(0, (snake[0][0] +1, snake[0][1]))
+    elif direction == 'LEFT':
+        snake.insert(0, (snake[0][0], snake[0][1] -1))
+    elif direction == 'RIGHT':
+        snake.insert(0, (snake[0][0], snake[0][1] +1))
+
+# End curses
 curses.endwin()
 
 
