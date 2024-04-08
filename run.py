@@ -34,10 +34,9 @@ Score = 0
 
 # snake and food
 snake = [(5, 4), (4, 3), (4, 2)]
-food = (6, 6)
+food = (8, 8)
 
 win.addch(food[0], food[1], '#')
-
 
 # Inital direction of the snake
 direction = 'RIGHT'
@@ -46,7 +45,7 @@ direction = 'RIGHT'
 while True:
     win.addstr(0, 2, 'Score ' + str(Score) + '')
     win.refresh()
-    time.sleep(0.1)
+    time.sleep(0.2)
 
     #Handel user input
     event = win.getch()
@@ -73,16 +72,24 @@ while True:
     if direction == 'RIGHT':
         x += 1
 
+    snake.insert(0, (y, x))
+
     # If the snake runs in to border or itself game ends
     if y < 0 or y >= 25 or x < 0 or x >= 60:
         break # border
     if (y, x) in snake[1:]:
         break # itself
+
+    if (y, x) == food:
+        Score += 1
+        win.addch(food[0], food[1], ' ')
+        food = (random.randint(1, WINDOW_HEIGHT - 2), random.randint(1, WINDOW_WIDTH - 2)) # Generate new food
+    else:
+        last = snake.pop()
+        win.addch(last[0], last[1], ' ')
     
-    snake.insert(0, (y, x)) 
-
-
-    win.addch(snake[0][0], snake[0][1], '=')
+     
+    win.addch(snake[0][0], snake[0][1], '*')
 
 # End curses
 curses.endwin()
