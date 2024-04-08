@@ -73,7 +73,12 @@ while True:
     if direction == 'RIGHT':
         x += 1
 
-
+    # If the snake runs in to border or itself game ends
+    if y < 0 or y >= 25 or x < 0 or x >= 60:
+        break # border
+    if (y, x) in snake[1:]:
+        break # itself
+    
     snake.insert(0, (y, x)) 
 
 
