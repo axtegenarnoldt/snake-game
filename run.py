@@ -47,7 +47,7 @@ while True:
 
    #Handel user input
     event = win.getch()
-    if event == ('q'):
+    if event == ord('q'):
         break
     elif event == curses.KEY_UP:
         direction = 'UP'
@@ -58,6 +58,7 @@ while True:
     elif event == curses.KEY_RIGHT:
         direction = 'RIGHT'
 
+    # Directions to move the snake
     if direction == 'UP':
         snake.insert(0, (snake[0][0] -1, snake[0][1]))
     elif direction == 'DOWN':
