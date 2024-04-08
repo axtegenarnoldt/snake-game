@@ -23,12 +23,13 @@ WINDOW_WIDTH = 60  # number of columns of window box
 WINDOW_HEIGHT = 20 # number of rows of window box 
 
 # playground
-def main_game(win):
+def main_game(stdscr):
     curses.initscr()
     game_area = curses.newwin(WINDOW_HEIGHT, WINDOW_WIDTH, 0, 0)
     game_area.keypad(1)
     game_area.nodelay(1)
     game_area.timeout(100)
+    
 
     Score = 0
 
@@ -36,19 +37,20 @@ def main_game(win):
     snake = [(5, 4), (4, 3), (4, 2)]
     food = (8, 8)
 
-    win.addch(food[0], food[1], '#')
+    game_area.addch(food[0], food[1], '#')
 
     # Inital direction of the snake
     direction = 'RIGHT'
 
     
     while True:
-        win.addstr(0, 2, 'Score ' + str(Score) + '')
-        win.refresh()
+        game_area.addstr(0, 2, 'Score ' + str(Score) + '')
+        game_area.refresh()
         time.sleep(0.2)
+        
 
         #Handel user input
-        event = win.getch()
+        event = game_area.getch()
         if event == ord('q'):
             break
         elif event == curses.KEY_UP:
@@ -82,14 +84,14 @@ def main_game(win):
 
         if (y, x) == food:
             Score += 1
-            win.addch(food[0], food[1], ' ')
+            game_area.addch(food[0], food[1], ' ')
             food = (random.randint(1, WINDOW_HEIGHT - 2), random.randint(1, WINDOW_WIDTH - 2)) # Generate new food
         else:
             last = snake.pop()
-            win.addch(last[0], last[1], ' ')
+            game_area.addch(last[0], last[1], ' ')
     
      
-        win.addch(snake[0][0], snake[0][1], '*')
+        game_area.addch(snake[0][0], snake[0][1], '*')
 
     # End curses
     curses.endwin()
