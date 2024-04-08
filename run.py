@@ -22,14 +22,24 @@ SHEET = GSPREAD_CLIENT.open("snake_highscore")
 WINDOW_WIDTH = 60  # number of columns of window box 
 WINDOW_HEIGHT = 20 # number of rows of window box 
 
+
 # playground
 def main_game(stdscr):
     curses.initscr()
+    curses.start_color()
     game_area = curses.newwin(WINDOW_HEIGHT, WINDOW_WIDTH, 0, 0)
     game_area.keypad(1)
     game_area.nodelay(1)
     game_area.timeout(100)
     
+    #color for the snake
+    curses.init_pair(1, curses.COLOR_GREEN, curses.COLOR_BLACK)
+    # Colors for the food
+    curses.init_pair(2, curses.COLOR_RED, curses.COLOR_BLACK)
+    curses.init_pair(3, curses.COLOR_YELLOW, curses.COLOR_BLACK)
+    curses.init_pair(4, curses.COLOR_BLUE, curses.COLOR_BLACK)
+    curses.init_pair(5, curses.COLOR_WHITE, curses.COLOR_BLACK)
+    curses.init_pair(6, curses.COLOR_MAGENTA, curses.COLOR_BLACK)
 
     Score = 0
 
@@ -82,16 +92,22 @@ def main_game(stdscr):
         if (y, x) in snake[1:]:
             break # itself
 
-        if (y, x) == food:
+        if snake[0] == food:
             Score += 1
-            game_area.addch(food[0], food[1], ' ')
-            food = (random.randint(1, WINDOW_HEIGHT - 2), random.randint(1, WINDOW_WIDTH - 2)) # Generate new food
-        else:
+            food = ()
+            while food == ():
+                food = (random.randint(1, WINDOW_HEIGHT - 2), random.randint(1, WINDOW_WIDTH - 2)) # Generate new food
+                if food in snake:
+                    food = ()
+            food_color_pair = random.choice([2, 3, 4, 5, 6])
+            game_area.addch(food[0], food[1], '#', curses.color_pair(food_color_pair))
+        else: 
             last = snake.pop()
             game_area.addch(last[0], last[1], ' ')
+
     
      
-        game_area.addch(snake[0][0], snake[0][1], '*')
+            game_area.addch(snake[0][0], snake[0][1], '*', curses.color_pair(1))
 
     # End curses
     curses.endwin()
