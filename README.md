@@ -29,5 +29,6 @@ Before i deployd i to Heroku i used "pip3 freeze > requirements.txt" to add depe
 | Knowledge about | Source |
 | -------------------------- | --------------- | 
 | How to set up the google sheet: | Love sandwiches |
-| How to make a snake game using curses: Mision Codigo youtube tutorial | https://www.youtube.com/watch?v=M_npdRYD4K0 |
-| how to make a snake game using curses: Partick Loeber youtube tutorial| https://www.youtube.com/watch?v=_IKIkRMfZJA |
+| How to make a snake game using curses: Mision     Codigo youtube tutorial | https://www.youtube.com/watch?v=_IKIkRMfZJA |
+| how to make a snake game using curses: Partick Loeber youtube tutorial| https://www.youtube.com/watch?v=M_npdRYD4K0 |
+| how to use colors: | https://www.youtube.com/watch?v=JBE4OwdqzQ8, https://docs.python.org/3/library/curses.html |
