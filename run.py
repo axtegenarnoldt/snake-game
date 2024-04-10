@@ -3,6 +3,8 @@ import time
 import gspread
 import os
 import curses
+from rich.table import Table
+from rich.console import Console
 from google.oauth2.service_account import Credentials
 
 SCOPE = [
@@ -16,20 +18,41 @@ SCOPED_CREDS = CREDS.with_scopes(SCOPE)
 GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 SHEET = GSPREAD_CLIENT.open("snake_highscore")
 
-#structur for the playground and how to create snake and food
-#are taken from Patrick Loebers youtube: https://www.youtube.com/watch?v=M_npdRYD4K0
 
 WINDOW_WIDTH = 60  # number of columns of window box 
 WINDOW_HEIGHT = 20 # number of rows of window box 
 
+console = Console()
+Score = 0
 
-# playground
+
+ascii_art = (r"""
+     ____  _   _    _    _  _______    ____    _    __  __ _____ 
+    / ___|| \ | |  / \  | |/ / ____|  / ___|  / \  |  \/  | ____|
+    \___ \|  \| | / _ \ | ' /|  _|   | |  _  / _ \ | |\/| |  _|  
+     ___) | |\  |/ ___ \| . \| |___  | |_| |/ ___ \| |  | | |___ 
+    |____/|_| \_/_/   \_\_|\_\_____|  \____/_/   \_\_|  |_|_____|
+   """)
+
+def welcome_to_snake():
+    # Display ASCII art
+    ascii_art = (r"""
+         ____  _   _    _    _  _______    ____    _    __  __ _____ 
+        / ___|| \ | |  / \  | |/ / ____|  / ___|  / \  |  \/  | ____|
+        \___ \|  \| | / _ \ | ' /|  _|   | |  _  / _ \ | |\/| |  _|  
+         ___) | |\  |/ ___ \| . \| |___  | |_| |/ ___ \| |  | | |___ 
+        |____/|_| \_/_/   \_\_|\_\_____|  \____/_/   \_\_|  |_|_____| 
+    """)
+    console.print(ascii_art)
+
+
 def main_game(stdscr):
+    # playground
     curses.initscr()
     curses.start_color()
     game_area = curses.newwin(WINDOW_HEIGHT, WINDOW_WIDTH, 0, 0)
     game_area.keypad(1)
-    game_area.border(0)
+    game_area.border()
     game_area.nodelay(1)
     game_area.timeout(100)
     
@@ -114,5 +137,7 @@ def main_game(stdscr):
     # End curses
     curses.endwin()
 
+
 if __name__ == "__main__":
+ welcome_to_snake()
  curses.wrapper(main_game)
