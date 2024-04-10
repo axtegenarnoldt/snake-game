@@ -55,8 +55,9 @@ def main_game(stdscr):
     
     while True:
         game_area.addstr(0, 2, 'Score ' + str(Score) + '')
+        game_area.timeout(150 -(len(snake)) // 5 + len(snake)//10 % 120)
         game_area.refresh()
-        time.sleep(0.2)
+        time.sleep(0.1)
         
 
         #Handel user input
