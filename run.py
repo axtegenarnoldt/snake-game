@@ -109,7 +109,7 @@ def main_game(stdscr):
 
     
      
-            game_area.addch(snake[0][0], snake[0][1], '*', curses.color_pair(1))
+            game_area.addch(snake[0][0], snake[0][1], '@', curses.color_pair(1))
 
     # End curses
     curses.endwin()
