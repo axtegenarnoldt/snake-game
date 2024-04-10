@@ -3,7 +3,6 @@ import time
 import gspread
 import os
 import curses
-from rich.table import Table
 from rich.console import Console
 from google.oauth2.service_account import Credentials
 
@@ -45,6 +44,9 @@ def welcome_to_snake():
     """)
     console.print(ascii_art)
 
+def start_area():
+
+    welcome_to_snake()
 
 def main_game(stdscr):
     # playground
