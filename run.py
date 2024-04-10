@@ -29,6 +29,7 @@ def main_game(stdscr):
     curses.start_color()
     game_area = curses.newwin(WINDOW_HEIGHT, WINDOW_WIDTH, 0, 0)
     game_area.keypad(1)
+    game_area.border(0)
     game_area.nodelay(1)
     game_area.timeout(100)
     
@@ -55,9 +56,9 @@ def main_game(stdscr):
     
     while True:
         game_area.addstr(0, 2, 'Score ' + str(Score) + '')
-        game_area.timeout(150 -(len(snake)) // 5 + len(snake)//10 % 120)
         game_area.refresh()
         time.sleep(0.1)
+        game_area.timeout(150 - (len(snake)) // 5 + len(snake)//10 % 120) # increase speed
         
 
         #Handel user input
