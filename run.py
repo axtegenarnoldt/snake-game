@@ -68,6 +68,15 @@ def start_area(stdscr):
         elif user_input == ord('r'):
             display_rules(stdscr)
 
+def user_name(stdscr):
+    stdscr.clear()
+
+    curses.echo() # Enable echoing of characters
+    stdscr.addstr(0, 0, "Enter your name: ")
+    stdscr.refresh()
+    username = stdscr.getstr(0, 20, 15) # Get a 15-character string, starting at column 20
+    
+
 def main_game(stdscr):
     # Clears the screen
     stdscr.clear()
@@ -167,6 +176,7 @@ def update_high_score(Score):
 
 def main_loop(stdscr):
     start_area(stdscr)
+    username = user_name(stdscr)
     main_game(stdscr)
         
     
