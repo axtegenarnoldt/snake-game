@@ -1,21 +1,9 @@
 import random
 import time
-import gspread
 import os
 import curses
 from curses import panel
-from google.oauth2.service_account import Credentials
 
-SCOPE = [
-    "https://www.googleapis.com/auth/spreadsheets",
-    "https://www.googleapis.com/auth/drive.file",
-    "https://www.googleapis.com/auth/drive"
-    ]
-
-CREDS = Credentials.from_service_account_file("creds.json")
-SCOPED_CREDS = CREDS.with_scopes(SCOPE)
-GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
-SHEET = GSPREAD_CLIENT.open("snake_highscore")
 
 
 WINDOW_WIDTH = 60  # number of columns of window box 
@@ -70,11 +58,10 @@ def start_area(stdscr):
 
 def user_name(stdscr):
     stdscr.clear()
-
     curses.echo() # Enable echoing of characters
     stdscr.addstr(0, 0, "Enter your name: ")
     stdscr.refresh()
-    username = stdscr.getstr(0, 20, 15) # Get a 15-character string, starting at column 20
+    username = stdscr.getstr(0, 20, 15).decode('utf-8') # Get a 15-character string, starting at column 20
     
 
 def main_game(stdscr):
@@ -165,18 +152,12 @@ def main_game(stdscr):
 
             game_area.addch(snake[0][0], snake[0][1], '@', curses.color_pair(1))
 
-    update_high_score(Score)
     # End curses
     curses.endwin()
 
-def update_high_score(Score):
-    worksheet = SHEET.get_worksheet(0)
-    first_row = worksheet.row_count
-    worksheet.append_row([Score])
-
 def main_loop(stdscr):
     start_area(stdscr)
-    username = user_name(stdscr)
+    user_name(stdscr)
     main_game(stdscr)
         
     
