@@ -3,6 +3,7 @@ import time
 import gspread
 import os
 import curses
+from curses import panel
 from google.oauth2.service_account import Credentials
 
 SCOPE = [
@@ -21,6 +22,7 @@ WINDOW_WIDTH = 60  # number of columns of window box
 WINDOW_HEIGHT = 20  # number of rows of window box 
 
 def welcome_to_snake(stdscr):
+    stdscr.clear()
     # Display ASCII art
     stdscr.addstr(0, 0, r"""
          ____  _   _    _    _  _______    ____    _    __  __ _____ 
@@ -31,13 +33,31 @@ def welcome_to_snake(stdscr):
     """)
     stdscr.addstr(10, 0, "Press 'p' to play game or 'r' to view rules")
 
-def display_rules():
-    print("Rules of the game:")
-    print("1. Move the snake by pressing the arrow keys.")
-    print("2. Eat the food to increase your score.")
-    print("3. The game ends if you hit the border or the snake.") 
-    print("4. Press 'q' if you want to end game.")
-    print("5. Press any key to go back to menu.")
+def display_rules(stdscr):
+    stdscr.clear()
+    # Assuming you have a panel for displaying rules
+    rules_panel = panel.new_panel(stdscr.subwin(10, 30, 5, 5))
+    rules_panel.top()
+    rules_panel.show()
+    panel.update_panels()
+    curses.doupdate()
+
+    # Display rules here
+    stdscr.addstr(0, 0, "Rules of the game:")
+    stdscr.addstr(1, 0, "1. Move the snake by pressing the arrow keys.")
+    stdscr.addstr(2, 0, "2. Eat the food to increase your score.")
+    stdscr.addstr(3, 0, "3. The game ends if you hit the border or the snake.")
+    stdscr.addstr(4, 0, "4. Press 'q' if you want to end game.")
+    stdscr.addstr(5, 0, "5. Press any key to go back to menu.")
+    stdscr.refresh()
+
+    # Wait for any key press
+    stdscr.getch()
+
+    # Hide the rules panel and update panels
+    rules_panel.hide()
+    panel.update_panels()
+    curses.doupdate()
 
 def start_area(stdscr):
     while True:
@@ -46,9 +66,10 @@ def start_area(stdscr):
         if user_input == ord('p'):
             break
         elif user_input == ord('r'):
-            display_rules()
+            display_rules(stdscr)
 
 def main_game(stdscr):
+    stdscr.clear()
     # playground
     curses.initscr()
     curses.start_color()
