@@ -35,26 +35,26 @@ def welcome_to_snake(stdscr):
 
 def display_rules(stdscr):
     stdscr.clear()
-    # Assuming you have a panel for displaying rules
+    
     rules_panel = panel.new_panel(stdscr.subwin(10, 30, 5, 5))
     rules_panel.top()
     rules_panel.show()
     panel.update_panels()
     curses.doupdate()
 
-    # Display rules here
+    # Rules
     stdscr.addstr(0, 0, "Rules of the game:")
     stdscr.addstr(1, 0, "1. Move the snake by pressing the arrow keys.")
-    stdscr.addstr(2, 0, "2. Eat the food to increase your score.")
+    stdscr.addstr(2, 0, "2. Eat the food to increase your lenght and score.")
     stdscr.addstr(3, 0, "3. The game ends if you hit the border or the snake.")
     stdscr.addstr(4, 0, "4. Press 'q' if you want to end game.")
     stdscr.addstr(5, 0, "5. Press any key to go back to menu.")
     stdscr.refresh()
 
-    # Wait for any key press
+    # Waits for user input
     stdscr.getch()
 
-    # Hide the rules panel and update panels
+    # Hide the rules panel
     rules_panel.hide()
     panel.update_panels()
     curses.doupdate()
@@ -69,8 +69,9 @@ def start_area(stdscr):
             display_rules(stdscr)
 
 def main_game(stdscr):
+    # Clears the screen
     stdscr.clear()
-    # playground
+    # Playground
     curses.initscr()
     curses.start_color()
     game_area = curses.newwin(WINDOW_HEIGHT, WINDOW_WIDTH, 0, 0)
@@ -79,7 +80,7 @@ def main_game(stdscr):
     game_area.nodelay(1)
     game_area.timeout(100)
     
-    #color for the snake
+    # Color for the snake
     curses.init_pair(1, curses.COLOR_GREEN, curses.COLOR_BLACK)
     # Colors for the food
     curses.init_pair(2, curses.COLOR_RED, curses.COLOR_BLACK)
@@ -155,8 +156,14 @@ def main_game(stdscr):
 
             game_area.addch(snake[0][0], snake[0][1], '@', curses.color_pair(1))
 
+    update_high_score(Score)
     # End curses
     curses.endwin()
+
+def update_high_score(Score):
+    worksheet = SHEET.get_worksheet(0)
+    first_row = worksheet.row_count
+    worksheet.append_row([Score])
 
 def main_loop(stdscr):
     start_area(stdscr)
