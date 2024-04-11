@@ -18,10 +18,9 @@ SHEET = GSPREAD_CLIENT.open("snake_highscore")
 
 
 WINDOW_WIDTH = 60  # number of columns of window box 
-WINDOW_HEIGHT = 20 # number of rows of window box 
+WINDOW_HEIGHT = 20  # number of rows of window box 
 
 Score = 0
-
 
 
 def welcome_to_snake():
@@ -34,10 +33,24 @@ def welcome_to_snake():
         |____/|_| \_/_/   \_\_|\_\_____|  \____/_/   \_\_|  |_|_____| 
     """)
     
+    print("Press 'p' to play game or 'r' to view rules")
+
+def display_rules():
+
+    print("Rules of the game:")
+    print("1. Move the snake by pressing the arrow keys.")
+    print("2. Eat the food to increase your score.")
+    print("3. The game ends if you hit the border or the snake.") 
+    print("4. Press 'q' if you want to end game.") 
 
 def start_area():
-
-    welcome_to_snake()
+    while True:
+        welcome_to_snake()
+        user_input = input()
+        if user_input.lower() == 'p':
+            break
+        elif user_input.lower() == 'r':
+            display_rules()
 
 def main_game(stdscr):
     # playground
@@ -132,5 +145,5 @@ def main_game(stdscr):
 
 
 if __name__ == "__main__":
- welcome_to_snake()
+ start_area()
  curses.wrapper(main_game)
