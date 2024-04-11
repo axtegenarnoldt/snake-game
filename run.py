@@ -20,32 +20,24 @@ SHEET = GSPREAD_CLIENT.open("snake_highscore")
 WINDOW_WIDTH = 60  # number of columns of window box 
 WINDOW_HEIGHT = 20  # number of rows of window box 
 
-Score = 0
-
-
 def welcome_to_snake(stdscr):
-    welcome_to_snake = curses.newwin(WINDOW_HEIGHT, WINDOW_WIDTH, 0, 0)
     # Display ASCII art
-    welcome_to_snake.addstr(0, 0, r"""r
+    stdscr.addstr(0, 0, r"""
          ____  _   _    _    _  _______    ____    _    __  __ _____ 
         / ___|| \ | |  / \  | |/ / ____|  / ___|  / \  |  \/  | ____|
         \___ \|  \| | / _ \ | ' /|  _|   | |  _  / _ \ | |\/| |  _|  
          ___) | |\  |/ ___ \| . \| |___  | |_| |/ ___ \| |  | | |___ 
         |____/|_| \_/_/   \_\_|\_\_____|  \____/_/   \_\_|  |_|_____| 
     """)
-    welcome_to_snake.addstr(10, 0, "Press 'p' to play game or 'r' to view rules")
-    welcome_to_snake.refresh()
+    stdscr.addstr(10, 0, "Press 'p' to play game or 'r' to view rules")
 
-def display_rules(stdscr):
-    rules_window = curses.newwin(WINDOW_HEIGHT, WINDOW_WIDTH, 0, 0)
-    rules_window.addstr("Rules of the game:")
-    rules_window.addstr("1. Move the snake by pressing the arrow keys.")
-    rules_window.addstr("2. Eat the food to increase your score.")
-    rules_window.addstr("3. The game ends if you hit the border or the snake.") 
-    rules_window.addstr("4. Press 'q' if you want to end game.")
-    rules_window.addstr("5. Press any key to go back to menu.")
-    rules_window.refresh()
-    rules_window.getch()
+def display_rules():
+    print("Rules of the game:")
+    print("1. Move the snake by pressing the arrow keys.")
+    print("2. Eat the food to increase your score.")
+    print("3. The game ends if you hit the border or the snake.") 
+    print("4. Press 'q' if you want to end game.")
+    print("5. Press any key to go back to menu.")
 
 def start_area(stdscr):
     while True:
@@ -54,8 +46,7 @@ def start_area(stdscr):
         if user_input == ord('p'):
             break
         elif user_input == ord('r'):
-            stdscr.clear()
-            display_rules(stdscr)
+            display_rules()
 
 def main_game(stdscr):
     # playground
@@ -141,15 +132,16 @@ def main_game(stdscr):
             last = snake.pop()
             game_area.addch(last[0], last[1], ' ')
 
-    
-     
             game_area.addch(snake[0][0], snake[0][1], '@', curses.color_pair(1))
 
     # End curses
     curses.endwin()
+
+def main_loop(stdscr):
+    start_area(stdscr)
+    main_game(stdscr)
+        
     
 if __name__ == "__main__":
-    curses.wrapper(welcome_to_snake)
-    curses.wrapper(start_area)
-    curses.wrapper(main_game)
+    curses.wrapper(main_loop)
    
