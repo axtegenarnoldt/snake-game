@@ -62,6 +62,16 @@ def user_name(stdscr):
     stdscr.addstr(0, 0, "Enter your name: ")
     stdscr.refresh()
     username = stdscr.getstr(0, 20, 15).decode('utf-8') # Get a 15-character string, starting at column 20
+    return user_name
+
+def game_over_screen(stdscr, score):
+    stdscr.clear()
+    stdscr.addstr(0, 0, "Game Over!")
+    stdscr.addstr(2, 0, f"Your score: {score}")
+    stdscr.addstr(3, 0, f"Player: {user_name}")
+    stdscr.addstr(5, 0, "Do you want to play again? press 'p'")
+    stdscr.refresh()
+    stdscr.getch()
     
 
 def main_game(stdscr):
@@ -151,6 +161,7 @@ def main_game(stdscr):
             game_area.addch(last[0], last[1], ' ')
 
             game_area.addch(snake[0][0], snake[0][1], '@', curses.color_pair(1))
+    return Score
 
     # End curses
     curses.endwin()
@@ -158,7 +169,8 @@ def main_game(stdscr):
 def main_loop(stdscr):
     start_area(stdscr)
     user_name(stdscr)
-    main_game(stdscr)
+    score = main_game(stdscr,)
+    game_over_screen(stdscr, score)
         
     
 if __name__ == "__main__":
