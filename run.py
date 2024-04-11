@@ -3,7 +3,6 @@ import time
 import gspread
 import os
 import curses
-from rich.console import Console
 from google.oauth2.service_account import Credentials
 
 SCOPE = [
@@ -21,28 +20,20 @@ SHEET = GSPREAD_CLIENT.open("snake_highscore")
 WINDOW_WIDTH = 60  # number of columns of window box 
 WINDOW_HEIGHT = 20 # number of rows of window box 
 
-console = Console()
 Score = 0
 
 
-ascii_art = (r"""
-     ____  _   _    _    _  _______    ____    _    __  __ _____ 
-    / ___|| \ | |  / \  | |/ / ____|  / ___|  / \  |  \/  | ____|
-    \___ \|  \| | / _ \ | ' /|  _|   | |  _  / _ \ | |\/| |  _|  
-     ___) | |\  |/ ___ \| . \| |___  | |_| |/ ___ \| |  | | |___ 
-    |____/|_| \_/_/   \_\_|\_\_____|  \____/_/   \_\_|  |_|_____|
-   """)
 
 def welcome_to_snake():
     # Display ASCII art
-    ascii_art = (r"""
+    print(r"""\
          ____  _   _    _    _  _______    ____    _    __  __ _____ 
         / ___|| \ | |  / \  | |/ / ____|  / ___|  / \  |  \/  | ____|
         \___ \|  \| | / _ \ | ' /|  _|   | |  _  / _ \ | |\/| |  _|  
          ___) | |\  |/ ___ \| . \| |___  | |_| |/ ___ \| |  | | |___ 
         |____/|_| \_/_/   \_\_|\_\_____|  \____/_/   \_\_|  |_|_____| 
     """)
-    console.print(ascii_art)
+    
 
 def start_area():
 
