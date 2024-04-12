@@ -150,6 +150,9 @@ def main_game(stdscr):
         else:
             break
 
+        if snake[0] in snake[1:]:
+            break # End the game if the snake hits itself
+
         if snake[0] == food:
             Score += 1
             food = ()
