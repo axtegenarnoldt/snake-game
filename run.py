@@ -23,7 +23,6 @@ def welcome_to_snake(stdscr):
 
 def display_rules(stdscr):
     stdscr.clear()
-    
     rules_panel = panel.new_panel(stdscr.subwin(10, 30, 5, 5))
     rules_panel.top()
     rules_panel.show()
@@ -41,7 +40,6 @@ def display_rules(stdscr):
 
     # Waits for user input
     stdscr.getch()
-
     # Hide the rules panel
     rules_panel.hide()
     panel.update_panels()
@@ -62,13 +60,13 @@ def user_name(stdscr):
     stdscr.addstr(0, 0, "Enter your name: ")
     stdscr.refresh()
     username = stdscr.getstr(0, 20, 15).decode('utf-8') # Get a 15-character string, starting at column 20
-    return user_name
+    return username
 
-def game_over_screen(stdscr, score):
+def game_over_screen(stdscr, score, username):
     stdscr.clear()
     stdscr.addstr(0, 0, "Game Over!")
     stdscr.addstr(2, 0, f"Your score: {score}")
-    stdscr.addstr(3, 0, f"Player: {user_name}")
+    stdscr.addstr(3, 0, f"Player: {username}")
     stdscr.addstr(5, 0, "Do you want to play again? press 'p'")
     stdscr.refresh()
     stdscr.getch()
@@ -96,13 +94,10 @@ def main_game(stdscr):
     curses.init_pair(6, curses.COLOR_MAGENTA, curses.COLOR_BLACK)
 
     Score = 0
-
     # snake and food
     snake = [(5, 4), (4, 3), (4, 2)]
     food = (8, 8)
-
     game_area.addch(food[0], food[1], '#')
-
     # Inital direction of the snake
     direction = 'RIGHT'
 
@@ -113,7 +108,6 @@ def main_game(stdscr):
         time.sleep(0.1)
         game_area.timeout(150 - (len(snake)) // 5 + len(snake)//10 % 120) # increase speed
         
-
         #Handel user input
         event = game_area.getch()
         if event == ord('q'):
@@ -139,13 +133,11 @@ def main_game(stdscr):
         if direction == 'RIGHT':
             x += 1
 
-        snake.insert(0, (y, x))
-
-        # If the snake runs in to border or itself game ends
-        if y < 0 or y >= 25 or x < 0 or x >= 60:
-            break # border
-        if (y, x) in snake[1:]:
-            break # itself
+        # Check if the new position is within the game area
+        if 0 <= y < WINDOW_HEIGHT and 0 <= x < WINDOW_WIDTH:
+            snake.insert(0, (y, x))
+        else:
+            break # End the game if the snake tries to move outside the game area
 
         if snake[0] == food:
             Score += 1
@@ -153,7 +145,7 @@ def main_game(stdscr):
             while food == ():
                 food = (random.randint(1, WINDOW_HEIGHT - 2), random.randint(1, WINDOW_WIDTH - 2)) # Generate new food
                 if food in snake:
-                    food = ()
+                    food()
             food_color_pair = random.choice([2, 3, 4, 5, 6])
             game_area.addch(food[0], food[1], '#', curses.color_pair(food_color_pair))
         else: 
@@ -163,14 +155,12 @@ def main_game(stdscr):
             game_area.addch(snake[0][0], snake[0][1], '@', curses.color_pair(1))
     return Score
 
-    # End curses
-    curses.endwin()
 
 def main_loop(stdscr):
     start_area(stdscr)
-    user_name(stdscr)
+    username = user_name(stdscr)
     score = main_game(stdscr,)
-    game_over_screen(stdscr, score)
+    game_over_screen(stdscr, score, username)
         
     
 if __name__ == "__main__":
