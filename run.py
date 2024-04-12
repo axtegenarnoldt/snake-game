@@ -117,7 +117,7 @@ def main_game(stdscr):
         game_area.addstr(0, 2, 'Score ' + str(Score) + '')
         game_area.refresh()
         time.sleep(0.1)
-        game_area.timeout(100 - (len(snake)) // 5 + len(snake)//10 % 120) # increase speed
+        game_area.timeout(150 - (len(snake)) // 5 + len(snake)//10 % 120) # increase speed
         
         #Handel user input
         event = game_area.getch()

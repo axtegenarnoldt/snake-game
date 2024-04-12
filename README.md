@@ -1,3 +1,5 @@
+# SNAKE GAME
+A simple Snake Game for everyone feeling nostalgic and wants to have some fun.
 ## Deployment
 
 ### Heroku
@@ -31,4 +33,6 @@ Before i deployd i to Heroku i used "pip3 freeze > requirements.txt" to add depe
 | How to set up the google sheet: | Love sandwiches |
 | How to make a snake game using curses: Mision     Codigo youtube tutorial | https://www.youtube.com/watch?v=_IKIkRMfZJA |
 | how to make a snake game using curses: Partick Loeber youtube tutorial| https://www.youtube.com/watch?v=M_npdRYD4K0 |
-| how to use colors: | https://www.youtube.com/watch?v=JBE4OwdqzQ8, https://docs.python.org/3/library/curses.html |
+| how to use colors: | https://www.youtube.com/watch?v=JBE4OwdqzQ8 |
+| ASCII art | https://www.asciiart.eu/text-to-ascii-art |
+| Curses functions | https://docs.python.org/3/library/curses.html |
