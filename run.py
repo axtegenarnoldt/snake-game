@@ -4,8 +4,6 @@ import os
 import curses
 from curses import panel
 
-
-
 WINDOW_WIDTH = 60  # number of columns of window box 
 WINDOW_HEIGHT = 20  # number of rows of window box 
 
@@ -64,11 +62,17 @@ def user_name(stdscr):
 
 def game_over_screen(stdscr, score, username):
     stdscr.clear()
-    stdscr.addstr(0, 0, "Game Over!")
-    stdscr.addstr(2, 0, f"{username} Your Score is: {score}")
-    stdscr.addstr(4, 0, f"I think you can do better than that {username}, Let's play again!")
-    stdscr.addstr(6, 0, "If you are ready to play again press 'p'")
-    stdscr.addstr(8, 0, "If you don't want to play anymore, press any key.")
+    stdscr.addstr(0, 0, r"""
+          ____                         ___                 
+         / ___| __ _ _ __ ___   ___   / _ \__   _____ _ __ 
+        | |  _ / _` | '_ ` _ \ / _ \ | | | \ \ / / _ \ '__|
+        | |_| | (_| | | | | | |  __/ | |_| |\ V /  __/ |   
+         \____|\__,_|_| |_| |_|\___|  \___/  \_/ \___|_|  
+        """) 
+    stdscr.addstr(8, 0, f"{username} Your Score is: {score}")
+    stdscr.addstr(9, 0, f"I think you can do better than that {username}, Let's play again!")
+    stdscr.addstr(11, 0, "If you are ready to play again press 'p'")
+    stdscr.addstr(12, 0, "If you don't want to play anymore, press any key.")
     stdscr.refresh()
 
     user_input = stdscr.getch()
