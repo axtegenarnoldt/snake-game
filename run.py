@@ -65,11 +65,18 @@ def user_name(stdscr):
 def game_over_screen(stdscr, score, username):
     stdscr.clear()
     stdscr.addstr(0, 0, "Game Over!")
-    stdscr.addstr(2, 0, f"Your score: {score}")
-    stdscr.addstr(3, 0, f"Player: {username}")
-    stdscr.addstr(5, 0, "Do you want to play again? press 'p'")
+    stdscr.addstr(2, 0, f"{username} Your Score is: {score}")
+    stdscr.addstr(4, 0, f"I think you can do better than that {username}, Let's play again!")
+    stdscr.addstr(6, 0, "If you are ready to play again press 'p'")
+    stdscr.addstr(8, 0, "If you don't want to play anymore, press any key.")
     stdscr.refresh()
-    stdscr.getch()
+
+    user_input = stdscr.getch()
+
+    if user_input == ord('p'):
+        main_loop(stdscr)
+    else:
+        curses.endwin()
     
 
 def main_game(stdscr):
@@ -106,7 +113,7 @@ def main_game(stdscr):
         game_area.addstr(0, 2, 'Score ' + str(Score) + '')
         game_area.refresh()
         time.sleep(0.1)
-        game_area.timeout(150 - (len(snake)) // 5 + len(snake)//10 % 120) # increase speed
+        game_area.timeout(100 - (len(snake)) // 5 + len(snake)//10 % 120) # increase speed
         
         #Handel user input
         event = game_area.getch()
@@ -137,7 +144,7 @@ def main_game(stdscr):
         if 0 <= y < WINDOW_HEIGHT and 0 <= x < WINDOW_WIDTH:
             snake.insert(0, (y, x))
         else:
-            break # End the game if the snake tries to move outside the game area
+            break
 
         if snake[0] == food:
             Score += 1
