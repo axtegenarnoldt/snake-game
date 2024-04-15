@@ -159,7 +159,7 @@ def main_game(stdscr):
             while food == ():
                 food = (random.randint(1, WINDOW_HEIGHT - 2), random.randint(1, WINDOW_WIDTH - 2)) # Generate new food
                 if food in snake:
-                    food()
+                    food = ()
             food_color_pair = random.choice([2, 3, 4, 5, 6])
             game_area.addch(food[0], food[1], '#', curses.color_pair(food_color_pair))
         else: 
