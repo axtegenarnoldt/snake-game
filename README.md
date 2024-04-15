@@ -1,4 +1,6 @@
 # SNAKE GAME
+<img src="" alt="image of website on different screens">
+
 A simple Snake Game for everyone feeling nostalgic and wants to have some fun.
 ## Deployment
 
