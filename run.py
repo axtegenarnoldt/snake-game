@@ -74,9 +74,7 @@ def game_over_screen(stdscr, score, username):
     stdscr.addstr(11, 0, "If you are ready to play again press 'p'")
     stdscr.addstr(12, 0, "If you don't want to play anymore, press any key.")
     stdscr.refresh()
-
     user_input = stdscr.getch()
-
     if user_input == ord('p'):
         main_loop(stdscr)
     else:
@@ -116,8 +114,7 @@ def main_game(stdscr):
     while True:
         game_area.addstr(0, 2, 'Score ' + str(Score) + '')
         game_area.refresh()
-        time.sleep(0.1)
-        game_area.timeout(150 - (len(snake)) // 5 + len(snake)//10 % 120) # increase speed
+        game_area.timeout(150 - (len(snake)) // 5 + len(snake)//10 % 120)  # increase speed
         
         #Handel user input
         event = game_area.getch()
@@ -173,7 +170,7 @@ def main_game(stdscr):
 def main_loop(stdscr):
     start_area(stdscr)
     username = user_name(stdscr)
-    score = main_game(stdscr,)
+    score = main_game(stdscr)
     game_over_screen(stdscr, score, username)
         
     
