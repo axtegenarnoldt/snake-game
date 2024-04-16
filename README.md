@@ -20,8 +20,21 @@ A simple Snake Game for everyone feeling nostalgic and wants to have some fun.
 ## UX
 
 ## Fetures
-### Start Page
-<img src="docs/startpage.png">
+### Welcome Screen
+The welcome_to_snake function displays the welcome message and instructions on how to start the game. It uses curses.init_pair to define color pairs for text and stdscr.addstr to display text on the screen.
+### Rules Screen
+The display_rules function shows the rules of the game. It uses panel.new_panel to create a panel for the rules, which is then displayed on the screen. The rules are displayed using stdscr.addstr, and the function waits for user input with stdscr.getch() before hiding the panel and returning to the main menu.
+### User Name Input
+The user_name function prompts the user to enter their name. It uses curses.echo() to enable echoing of characters and stdscr.getstr to get the user's input.
+### Main Game Loop
+The main_game function is where the main game logic resides. It initializes the game area, sets up color pairs for the snake and food, and handles the game loop. The game loop includes:
+Handling user input to move the snake.
+Updating the snake's position based on the direction.
+Checking for collisions with the game area borders or the snake itself.
+Handling the snake eating food, increasing the score, and generating new food.
+Updating the game area to reflect the new positions of the snake and food.
+### Game Over Screen
+The game_over_screen function displays the game over screen, showing the user's score and asking if they want to play again. It uses curses.init_pair to define a color pair for the game over text and stdscr.addstr to display the text.
 
 
 

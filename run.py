@@ -18,7 +18,9 @@ def welcome_to_snake(stdscr):
          ___) | |\  |/ ___ \| . \| |___  | |_| |/ ___ \| |  | | |___ 
         |____/|_| \_/_/   \_\_|\_\_____|  \____/_/   \_\_|  |_|_____| 
     """, curses.color_pair(1))
-    stdscr.addstr(10, 0, "Press 'p' to play game or 'r' to view rules")
+    stdscr.addstr(10, 0, "Welcome to the Snake game!")
+    stdscr.addstr(11, 0, "Are you ready to get nostalgic? Let's play!")
+    stdscr.addstr(13, 0, "Press 'p' to play game or 'r' to view rules")
 
 def display_rules(stdscr):
     stdscr.clear()
