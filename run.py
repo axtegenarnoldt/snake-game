@@ -10,6 +10,7 @@ WINDOW_HEIGHT = 20  # number of rows of window box
 def welcome_to_snake(stdscr):
     stdscr.clear()
     curses.init_pair(1, curses.COLOR_GREEN, curses.COLOR_BLACK)
+    curses.init_pair(2, curses.COLOR_CYAN, curses.COLOR_BLACK)
     # Display ASCII art
     stdscr.addstr(0, 0, r"""
          ____  _   _    _    _  _______    ____    _    __  __ _____ 
@@ -18,9 +19,9 @@ def welcome_to_snake(stdscr):
          ___) | |\  |/ ___ \| . \| |___  | |_| |/ ___ \| |  | | |___ 
         |____/|_| \_/_/   \_\_|\_\_____|  \____/_/   \_\_|  |_|_____| 
     """, curses.color_pair(1))
-    stdscr.addstr(10, 0, "Welcome to the Snake game!")
-    stdscr.addstr(11, 0, "Are you ready to get nostalgic? Let's play!")
-    stdscr.addstr(13, 0, "Press 'p' to play game or 'r' to view rules")
+    stdscr.addstr(10, 0, "Welcome to the Snake game!", curses.color_pair(2))
+    stdscr.addstr(11, 0, "Are you ready to get nostalgic? Let's play!", curses.color_pair(2))
+    stdscr.addstr(13, 0, "Press 'p' to play game or 'r' to view rules", curses.color_pair(2))
 
 def display_rules(stdscr):
     stdscr.clear()
@@ -30,13 +31,14 @@ def display_rules(stdscr):
     panel.update_panels()
     curses.doupdate()
 
+    curses.init_pair(1, curses.COLOR_CYAN, curses.COLOR_BLACK)
     # Rules
-    stdscr.addstr(0, 0, "Rules of the game:")
-    stdscr.addstr(1, 0, "1. Move the snake by pressing the arrow keys.")
-    stdscr.addstr(2, 0, "2. Eat the food to increase your lenght and score.")
-    stdscr.addstr(3, 0, "3. The game ends if you hit the border or the snake.")
-    stdscr.addstr(4, 0, "4. Press 'q' if you want to end game.")
-    stdscr.addstr(5, 0, "5. Press any key to go back to menu.")
+    stdscr.addstr(0, 0, "Rules of the game:", curses.color_pair(2))
+    stdscr.addstr(1, 0, "1. Move the snake by pressing the arrow keys.", curses.color_pair(2))
+    stdscr.addstr(2, 0, "2. Eat the food to increase your lenght and score.", curses.color_pair(2))
+    stdscr.addstr(3, 0, "3. The game ends if you hit the border or the snake.", curses.color_pair(2))
+    stdscr.addstr(4, 0, "4. Press 'q' if you want to end game.", curses.color_pair(2))
+    stdscr.addstr(5, 0, "5. Press any key to go back to menu.", curses.color_pair(2))
     stdscr.refresh()
 
     # Waits for user input
@@ -73,10 +75,10 @@ def game_over_screen(stdscr, score, username):
         | |_| | (_| | | | | | |  __/ | |_| |\ V /  __/ |   
          \____|\__,_|_| |_| |_|\___|  \___/  \_/ \___|_|  
         """, curses.color_pair(2)) 
-    stdscr.addstr(8, 0, f"{username} Your Score is: {score}")
-    stdscr.addstr(9, 0, f"I think you can do better than that {username}, Let's play again!")
-    stdscr.addstr(11, 0, "If you are ready to play again press 'p'")
-    stdscr.addstr(12, 0, "If you don't want to play anymore, press any key.")
+    stdscr.addstr(8, 0, f"{username} Your Score is: {score}", curses.color_pair(2))
+    stdscr.addstr(9, 0, f"I think you can do better than that {username}, Let's play again!", curses.color_pair(2))
+    stdscr.addstr(11, 0, "If you are ready to play again press 'p'", curses.color_pair(2))
+    stdscr.addstr(12, 0, "If you don't want to play anymore, press any key.", curses.color_pair(2))
     stdscr.refresh()
     user_input = stdscr.getch()
     if user_input == ord('p'):
