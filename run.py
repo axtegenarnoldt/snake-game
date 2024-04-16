@@ -30,7 +30,7 @@ def display_rules(stdscr):
     panel.update_panels()
     curses.doupdate()
 
-    curses.init_pair(1, curses.COLOR_CYAN, curses.COLOR_BLACK)
+    curses.init_pair(2, curses.COLOR_CYAN, curses.COLOR_BLACK)
     # Rules
     stdscr.addstr(0, 0, "Rules of the game:", curses.color_pair(2))
     stdscr.addstr(1, 0, "1. Move the snake by pressing the arrow keys.", curses.color_pair(2))

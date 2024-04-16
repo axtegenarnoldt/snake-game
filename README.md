@@ -21,7 +21,9 @@ A simple Snake Game for everyone feeling nostalgic and wants to have some fun.
 
 ## Fetures
 ### Welcome Screen
-The welcome_to_snake function displays the welcome message and instructions on how to start the game. It uses curses.init_pair to define color pairs for text and stdscr.addstr to display text on the screen.
+<img src="docs/welcomeScreen.png">
+The welcome screen displays ASCII art snake and a welcome message and instructions on how to start the game.
+
 ### Rules Screen
 The display_rules function shows the rules of the game. It uses panel.new_panel to create a panel for the rules, which is then displayed on the screen. The rules are displayed using stdscr.addstr, and the function waits for user input with stdscr.getch() before hiding the panel and returning to the main menu.
 ### User Name Input
