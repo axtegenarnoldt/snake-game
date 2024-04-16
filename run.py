@@ -9,6 +9,7 @@ WINDOW_HEIGHT = 20  # number of rows of window box
 
 def welcome_to_snake(stdscr):
     stdscr.clear()
+    curses.init_pair(1, curses.COLOR_GREEN, curses.COLOR_BLACK)
     # Display ASCII art
     stdscr.addstr(0, 0, r"""
          ____  _   _    _    _  _______    ____    _    __  __ _____ 
@@ -16,7 +17,7 @@ def welcome_to_snake(stdscr):
         \___ \|  \| | / _ \ | ' /|  _|   | |  _  / _ \ | |\/| |  _|  
          ___) | |\  |/ ___ \| . \| |___  | |_| |/ ___ \| |  | | |___ 
         |____/|_| \_/_/   \_\_|\_\_____|  \____/_/   \_\_|  |_|_____| 
-    """)
+    """, curses.color_pair(1))
     stdscr.addstr(10, 0, "Press 'p' to play game or 'r' to view rules")
 
 def display_rules(stdscr):
@@ -62,13 +63,14 @@ def user_name(stdscr):
 
 def game_over_screen(stdscr, score, username):
     stdscr.clear()
+    curses.init_pair(2, curses.COLOR_RED, curses.COLOR_BLACK)
     stdscr.addstr(0, 0, r"""
           ____                         ___                 
          / ___| __ _ _ __ ___   ___   / _ \__   _____ _ __ 
         | |  _ / _` | '_ ` _ \ / _ \ | | | \ \ / / _ \ '__|
         | |_| | (_| | | | | | |  __/ | |_| |\ V /  __/ |   
          \____|\__,_|_| |_| |_|\___|  \___/  \_/ \___|_|  
-        """) 
+        """, curses.color_pair(2)) 
     stdscr.addstr(8, 0, f"{username} Your Score is: {score}")
     stdscr.addstr(9, 0, f"I think you can do better than that {username}, Let's play again!")
     stdscr.addstr(11, 0, "If you are ready to play again press 'p'")
