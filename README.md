@@ -1,10 +1,36 @@
-# SNAKE GAME
 <img src="" alt="image of website on different screens">
+Welcome to the Snake Game, a classic text-based game brought to life using Python. This project is a simple yet engaging implementation of the timeless Snake game.
 
+# Snake Game
 A simple Snake Game for everyone feeling nostalgic and wants to have some fun.
+## Contents
+**Table of content:**
+- [User Experience](#user-experience)
+- [Features](#features)
+- [Testing](#testing)
+- [Deployment](#deployment)
+- [Credit](#credit)
+
+## User Experience
+
+### First time user
+
+### Design
+
+## UX
+
+## Fetures
+### Start Page
+<img src="docs/startpage.png">
+
+
+
+## Testing
+
 ## Deployment
 
-### Heroku
+### HEROKU
+
 To the deploy this project i followed the deployment guide from love sandwiches.
 
 Before i deployd i to Heroku i used "pip3 freeze > requirements.txt" to add dependencies that's requierd for the game to work in Heroku.
