@@ -4,23 +4,26 @@ import os
 import curses
 from curses import panel
 
-WINDOW_WIDTH = 60  # number of columns of window box 
-WINDOW_HEIGHT = 20  # number of rows of window box 
+WINDOW_WIDTH = 60  # number of columns of window box
+WINDOW_HEIGHT = 20  # number of rows of window box
+
 
 def welcome_to_snake(stdscr):
+
     stdscr.clear()
     curses.init_pair(1, curses.COLOR_GREEN, curses.COLOR_BLACK)
     # Display ASCII art
     stdscr.addstr(0, 0, r"""
-         ____  _   _    _    _  _______    ____    _    __  __ _____ 
+         ____  _   _    _    _  _______    ____    _    __  __ _____
         / ___|| \ | |  / \  | |/ / ____|  / ___|  / \  |  \/  | ____|
-        \___ \|  \| | / _ \ | ' /|  _|   | |  _  / _ \ | |\/| |  _|  
-         ___) | |\  |/ ___ \| . \| |___  | |_| |/ ___ \| |  | | |___ 
-        |____/|_| \_/_/   \_\_|\_\_____|  \____/_/   \_\_|  |_|_____| 
+        \___ \|  \| | / _ \ | ' /|  _|   | |  _  / _ \ | |\/| |  _|
+         ___) | |\  |/ ___ \| . \| |___  | |_| |/ ___ \| |  | | |___
+        |____/|_| \_/_/   \_\_|\_\_____|  \____/_/   \_\_|  |_|_____|
     """, curses.color_pair(1))
     stdscr.addstr(10, 0, "Welcome to the Snake game!", curses.color_pair(1))
     stdscr.addstr(11, 0, "Are you ready to get nostalgic? Let's play!", curses.color_pair(1))
     stdscr.addstr(13, 0, "Press 'p' to play game or 'r' to view rules", curses.color_pair(1))
+
 
 def display_rules(stdscr):
     stdscr.clear()
@@ -47,6 +50,7 @@ def display_rules(stdscr):
     panel.update_panels()
     curses.doupdate()
 
+
 def start_area(stdscr):
     while True:
         welcome_to_snake(stdscr)
@@ -56,24 +60,27 @@ def start_area(stdscr):
         elif user_input == ord('r'):
             display_rules(stdscr)
 
+
 def user_name(stdscr):
     stdscr.clear()
-    curses.echo() # Enable echoing of characters
+    curses.echo()  # Enable echoing of characters
     stdscr.addstr(0, 0, "Enter your name: ")
     stdscr.refresh()
-    username = stdscr.getstr(0, 20, 15).decode('utf-8') # Get a 15-character string, starting at column 20
+    # Get a 15-character string, starting at column 20
+    username = stdscr.getstr(0, 20, 15).decode('utf-8')
     return username
+
 
 def game_over_screen(stdscr, score, username):
     stdscr.clear()
     curses.init_pair(2, curses.COLOR_RED, curses.COLOR_BLACK)
     stdscr.addstr(0, 0, r"""
-          ____                         ___                 
-         / ___| __ _ _ __ ___   ___   / _ \__   _____ _ __ 
+          ____                         ___   
+         / ___| __ _ _ __ ___   ___   / _ \__   _____ _ __
         | |  _ / _` | '_ ` _ \ / _ \ | | | \ \ / / _ \ '__|
-        | |_| | (_| | | | | | |  __/ | |_| |\ V /  __/ |   
-         \____|\__,_|_| |_| |_|\___|  \___/  \_/ \___|_|  
-        """, curses.color_pair(2)) 
+        | |_| | (_| | | | | | |  __/ | |_| |\ V /  __/ |
+         \____|\__,_|_| |_| |_|\___|  \___/  \_/ \___|_|
+        """, curses.color_pair(2))
     stdscr.addstr(8, 0, f"{username} Your Score is: {score}", curses.color_pair(2))
     stdscr.addstr(9, 0, f"I think you can do better than that {username}, Let's play again!", curses.color_pair(2))
     stdscr.addstr(11, 0, "If you are ready to play again press 'p'", curses.color_pair(2))
@@ -83,7 +90,8 @@ def game_over_screen(stdscr, score, username):
     if user_input == ord('p'):
         main_loop(stdscr)
     else:
-        curses.endwin()    
+        curses.endwin()
+
 
 def main_game(stdscr):
     # Clears the screen
@@ -96,7 +104,7 @@ def main_game(stdscr):
     game_area.border()
     game_area.nodelay(1)
     game_area.timeout(100)
-    
+
     # Color for the snake
     curses.init_pair(1, curses.COLOR_GREEN, curses.COLOR_BLACK)
     # Colors for the food
@@ -114,13 +122,12 @@ def main_game(stdscr):
     # Inital direction of the snake
     direction = 'RIGHT'
 
-    
     while True:
         game_area.addstr(0, 2, 'Score ' + str(Score) + '')
         game_area.refresh()
         game_area.timeout(150 - (len(snake)) // 5 + len(snake)//10 % 120)  # increase speed
-        
-        #Handel user input
+
+        # Handel user input
         event = game_area.getch()
         if event == ord('q'):
             break
@@ -152,18 +159,18 @@ def main_game(stdscr):
             break
 
         if snake[0] in snake[1:]:
-            break # End the game if the snake hits itself
+            break  # End the game if the snake hits itself
 
         if snake[0] == food:
             Score += 1
             food = ()
             while food == ():
-                food = (random.randint(1, WINDOW_HEIGHT - 2), random.randint(1, WINDOW_WIDTH - 2)) # Generate new food
+                food = (random.randint(1, WINDOW_HEIGHT - 2), random.randint(1, WINDOW_WIDTH - 2))
                 if food in snake:
                     food = ()
             food_color_pair = random.choice([2, 3, 4, 5, 6])
             game_area.addch(food[0], food[1], '#', curses.color_pair(food_color_pair))
-        else: 
+        else:
             last = snake.pop()
             game_area.addch(last[0], last[1], ' ')
 
@@ -176,8 +183,7 @@ def main_loop(stdscr):
     username = user_name(stdscr)
     score = main_game(stdscr)
     game_over_screen(stdscr, score, username)
-        
-    
+
+
 if __name__ == "__main__":
     curses.wrapper(main_loop)
-   
