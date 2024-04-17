@@ -70,13 +70,13 @@ def start_area(stdscr):
 
 def user_name(stdscr):
     stdscr.clear()
-    curses.echo() # Enable echoing of characters
-    while True: # Keep prompting until a name is entered
+    curses.echo()  # Enable echoing of characters
+    while True:  # Keep prompting until a name is entered
         stdscr.addstr(0, 0, "Enter your name: ")
         stdscr.refresh()
         # Get a 15-character string, starting at column 20
         username = stdscr.getstr(0, 20, 15).decode('utf-8')
-        if username.strip(): # Check if the entered name is empty
+        if username.strip():  # Check if the entered name is empty
             break
         else:
             stdscr.addstr(1, 0, " Please enter your name.")
@@ -185,16 +185,19 @@ def main_game(stdscr):
             score += 1
             food = ()
             while food == ():
-                food = (random.randint(1, WINDOW_HEIGHT - 2), random.randint(1, WINDOW_WIDTH - 2))
+                food = (random.randint(1, WINDOW_HEIGHT - 2), random.randint(
+                    1, WINDOW_WIDTH - 2))
                 if food in snake:
                     food = ()
             food_color_pair = random.choice([2, 3, 4, 5, 6])
-            game_area.addch(food[0], food[1], '#', curses.color_pair(food_color_pair))
+            game_area.addch(food[0], food[1], '#', curses.color_pair(
+                food_color_pair))
         else:
             last = snake.pop()
             game_area.addch(last[0], last[1], ' ')
 
-            game_area.addch(snake[0][0], snake[0][1], '@', curses.color_pair(1))
+            game_area.addch(snake[0][0], snake[0][1], '@', curses.color_pair(
+                1))
     return score
 
 
