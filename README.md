@@ -75,7 +75,7 @@ The game over screen displays ASCII art, the user's name and score. Asks if they
 
 ### WAVE
 <img src="docs/wave.png">
-Accessability testing at [webaim](https://wave.webaim.org/) 
+Accessability testing at https://wave.webaim.org/  
 
 ### Lighthouse
 Tested the website in lighthouse for desktop.
