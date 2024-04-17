@@ -1,4 +1,4 @@
-<img src="" alt="image of website on different screens">
+<img src="docs/amiresponsiv.png" alt="image of website on different screens">
 
 # Snake Game
 Welcome to the Snake Game, a classic text-based game brought to life using Python. This project is a simple yet engaging implementation of the timeless Snake game.
@@ -48,34 +48,34 @@ The start page displays the ASCII and text in a green color to match with the gr
 ## Fetures
 
 ### Welcome Screen
-<img src="">
+<img src="docs/startscreen.png">
 The welcome screen displays ASCII art snake and a welcome message and instructions on how to start the game.
 
 ### Rules Screen
-<img src="">
+<img src="docs/rulesscreen.png">
 The rules screen explains the game rules and waits for user input go go back to menu.
 
 ### User Name
-<img src="">
+<img src="docs/usernamescreen.png">
 The user name function prompts the user to enter their name before the game starts.
 
 ### Main Game 
-<img src="">
+<img src="docs/maingamescreen.png">
 When the game starts the user controls the snakes direction with the arrowkeys. Every time the snake eats the food, new food shows up in a random place, live score increses and the snake grows. If the user hits the game borders or itself the game ends.
 
 ### Live Score
-<img src="">
+<img src="docs/livescore.png">
 For a better user experience the player can see the live score at the top left corner of the screen.
 
 ### Game Over Screen
-<img src="">
+<img src="docs/gameoverscreen.png">
 The game over screen displays ASCII art, the user's name and score. Asks if they want to play again and waits for user input.
 
 ## Testing
 
 ### WAVE
-<img src="">
-Accessability testing at [Wave Webaim](https://wave.webaim.org/) gave a contrast error for the "run program" button. This have been added as an unfixed bug. 
+<img src="docs/wave.png">
+Accessability testing at [webaim](https://wave.webaim.org/) 
 
 ### Lighthouse
 Tested the website in lighthouse for desktop.
