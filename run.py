@@ -20,9 +20,11 @@ def welcome_to_snake(stdscr):
          ___) | |\  |/ ___ \| . \| |___  | |_| |/ ___ \| |  | | |___
         |____/|_| \_/_/   \_\_|\_\_____|  \____/_/   \_\_|  |_|_____|
     """, curses.color_pair(1))
-    stdscr.addstr(10, 0, "Welcome to the Snake game!", curses.color_pair(1))
-    stdscr.addstr(11, 0, "Are you ready to get nostalgic? Let's play!", curses.color_pair(1))
-    stdscr.addstr(13, 0, "Press 'p' to play game or 'r' to view rules", curses.color_pair(1))
+    stdscr.addstr(10, 0, " Welcome to the Snake game!", curses.color_pair(1))
+    stdscr.addstr(11, 0, """ Are you ready to get nostalgic? Let's play!
+    """, curses.color_pair(1))
+    stdscr.addstr(13, 0, """ Press 'p' to play game or 'r' to view rules
+    """, curses.color_pair(1))
 
 
 def display_rules(stdscr):
@@ -35,12 +37,17 @@ def display_rules(stdscr):
 
     curses.init_pair(2, curses.COLOR_CYAN, curses.COLOR_BLACK)
     # Rules
-    stdscr.addstr(0, 0, "Rules of the game:", curses.color_pair(2))
-    stdscr.addstr(1, 0, "1. Move the snake by pressing the arrow keys.", curses.color_pair(2))
-    stdscr.addstr(2, 0, "2. Eat the food to increase your lenght and score.", curses.color_pair(2))
-    stdscr.addstr(3, 0, "3. The game ends if you hit the border or the snake.", curses.color_pair(2))
-    stdscr.addstr(4, 0, "4. Press 'q' if you want to end game.", curses.color_pair(2))
-    stdscr.addstr(5, 0, "5. Press any key to go back to menu.", curses.color_pair(2))
+    stdscr.addstr(0, 0, " Rules of the game:", curses.color_pair(2))
+    stdscr.addstr(1, 0, """ 1.Move the snake by pressing the arrow keys.
+    """, curses.color_pair(2))
+    stdscr.addstr(2, 0, """ 2.Eat the food to increase your lenght and score.
+    """, curses.color_pair(2))
+    stdscr.addstr(3, 0, """ 3.The game ends if you hit the border or the snake.
+    """, curses.color_pair(2))
+    stdscr.addstr(4, 0, """ 4.Press 'q' if you want to end game.
+    """, curses.color_pair(2))
+    stdscr.addstr(5, 0, """ 5.Press any key to go back to menu.
+    """, curses.color_pair(2))
     stdscr.refresh()
 
     # Waits for user input
@@ -63,11 +70,18 @@ def start_area(stdscr):
 
 def user_name(stdscr):
     stdscr.clear()
-    curses.echo()  # Enable echoing of characters
-    stdscr.addstr(0, 0, "Enter your name: ")
-    stdscr.refresh()
-    # Get a 15-character string, starting at column 20
-    username = stdscr.getstr(0, 20, 15).decode('utf-8')
+    curses.echo() # Enable echoing of characters
+    while True: # Keep prompting until a non-empty name is entered
+        stdscr.addstr(0, 0, "Enter your name: ")
+        stdscr.refresh()
+        # Get a 15-character string, starting at column 20
+        username = stdscr.getstr(0, 20, 15).decode('utf-8')
+        if username.strip(): # Check if the entered name is not empty
+            break
+        else:
+            stdscr.addstr(1, 0, "Name cannot be empty. Please enter your name.")
+            stdscr.refresh()
+            time.sleep(1) # Optional: Pause for a moment before re-prompting
     return username
 
 
@@ -81,10 +95,15 @@ def game_over_screen(stdscr, score, username):
         | |_| | (_| | | | | | |  __/ | |_| |\ V /  __/ |
          \____|\__,_|_| |_| |_|\___|  \___/  \_/ \___|_|
         """, curses.color_pair(2))
-    stdscr.addstr(8, 0, f"{username} Your Score is: {score}", curses.color_pair(2))
-    stdscr.addstr(9, 0, f"I think you can do better than that {username}, Let's play again!", curses.color_pair(2))
-    stdscr.addstr(11, 0, "If you are ready to play again press 'p'", curses.color_pair(2))
-    stdscr.addstr(12, 0, "If you don't want to play anymore, press any key.", curses.color_pair(2))
+    stdscr.addstr(8, 0, f""" {username} Your Score is: {score}
+    """, curses.color_pair(2))
+    stdscr.addstr(9, 0, f""" I think you can do better than that {username}.
+    """, curses.color_pair(2))
+    stdscr.addstr(10, 0, """ Let's play again!""", curses.color_pair(2))
+    stdscr.addstr(11, 0, """ If you are ready to play again press 'p'
+    """, curses.color_pair(2))
+    stdscr.addstr(12, 0, """ If you don't want to play anymore, press any key.
+    """, curses.color_pair(2))
     stdscr.refresh()
     user_input = stdscr.getch()
     if user_input == ord('p'):
@@ -114,7 +133,7 @@ def main_game(stdscr):
     curses.init_pair(5, curses.COLOR_WHITE, curses.COLOR_BLACK)
     curses.init_pair(6, curses.COLOR_MAGENTA, curses.COLOR_BLACK)
 
-    Score = 0
+    score = 0
     # snake and food
     snake = [(5, 4), (4, 3), (4, 2)]
     food = (8, 8)
@@ -123,9 +142,10 @@ def main_game(stdscr):
     direction = 'RIGHT'
 
     while True:
-        game_area.addstr(0, 2, 'Score ' + str(Score) + '')
+        game_area.addstr(0, 2, 'Score ' + str(score) + '')
         game_area.refresh()
-        game_area.timeout(150 - (len(snake)) // 5 + len(snake)//10 % 120)  # increase speed
+        # increase speed
+        game_area.timeout(150 - (len(snake)) // 5 + len(snake)//10 % 120)
 
         # Handel user input
         event = game_area.getch()
@@ -159,10 +179,10 @@ def main_game(stdscr):
             break
 
         if snake[0] in snake[1:]:
-            break  # End the game if the snake hits itself
+            break  # Ends the game if the snake hits itself
 
         if snake[0] == food:
-            Score += 1
+            score += 1
             food = ()
             while food == ():
                 food = (random.randint(1, WINDOW_HEIGHT - 2), random.randint(1, WINDOW_WIDTH - 2))
@@ -175,7 +195,7 @@ def main_game(stdscr):
             game_area.addch(last[0], last[1], ' ')
 
             game_area.addch(snake[0][0], snake[0][1], '@', curses.color_pair(1))
-    return Score
+    return score
 
 
 def main_loop(stdscr):
