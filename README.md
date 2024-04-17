@@ -79,10 +79,17 @@ The game over screen displays ASCII art, the user's name and score. Asks if they
 
 Testing in [W3C Markup Validation Service](https://validator.w3.org/) No errors or warnings.
 
+### WAVE
+<img src="docs/WAVE.png">
+Accessability testing at [Wave Webaim](https://wave.webaim.org/) gave a contrast error for the "run program" button. This have been added as an unfixed bug. 
+
 ### Lighthouse
 Tested the website in lighthouse for desktop.
 
 <img src="docs/lighthouse.png">
+
+## Bugs
+
 
 ## Deployment
 
