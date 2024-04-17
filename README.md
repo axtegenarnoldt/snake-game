@@ -1,8 +1,8 @@
-<img src="" alt="image of website on different screens">
-Welcome to the Snake Game, a classic text-based game brought to life using Python. This project is a simple yet engaging implementation of the timeless Snake game.
+<img src="docs/AmIResponsive.png" alt="image of website on different screens">
 
 # Snake Game
-A simple Snake Game for everyone feeling nostalgic and wants to have some fun.
+Welcome to the Snake Game, a classic text-based game brought to life using Python. This project is a simple yet engaging implementation of the timeless Snake game.
+
 ## Contents
 **Table of content:**
 - [User Experience](#user-experience)
@@ -17,7 +17,6 @@ A simple Snake Game for everyone feeling nostalgic and wants to have some fun.
 
 ### Design
 
-## UX
 
 ## Fetures
 ### Welcome Screen
@@ -32,15 +31,17 @@ The rules screen explains the game rules and waits for user input go go back to 
 <img src="docs/enterNameScreen.png">
 The user name function prompts the user to enter their name before the game starts.
 
-### Main Game Loop
-The main_game function is where the main game logic resides. It initializes the game area, sets up color pairs for the snake and food, and handles the game loop. The game loop includes:
-Handling user input to move the snake.
-Updating the snake's position based on the direction.
-Checking for collisions with the game area borders or the snake itself.
-Handling the snake eating food, increasing the score, and generating new food.
-Updating the game area to reflect the new positions of the snake and food.
+### Main Game 
+<img src="docs/mainGameScreen.png">
+When the game starts the user controls the snakes direction with the arrowkeys. Every time the snake eats the food new food shows up in a random place. If the user hits the game borders or itself the game ends.
+
+### Live Score
+<img src="docs/liveScoreScreen.png">
+For a better user experience the player can see the live score at the top left corner of the screen.
+
 ### Game Over Screen
-The game_over_screen function displays the game over screen, showing the user's score and asking if they want to play again. It uses curses.init_pair to define a color pair for the game over text and stdscr.addstr to display the text.
+<img src="docs/GameOverScreen.png">
+The game over screen displays ASCII art, the user's name and score. Asks if they want to play again and waits for user input.
 
 
 
@@ -77,7 +78,6 @@ Before i deployd i to Heroku i used "pip3 freeze > requirements.txt" to add depe
 
 | Knowledge about | Source |
 | -------------------------- | --------------- | 
-| How to set up the google sheet: | Love sandwiches |
 | How to make a snake game using curses: Mision     Codigo youtube tutorial | https://www.youtube.com/watch?v=_IKIkRMfZJA |
 | how to make a snake game using curses: Partick Loeber youtube tutorial| https://www.youtube.com/watch?v=M_npdRYD4K0 |
 | how to use colors: | https://www.youtube.com/watch?v=JBE4OwdqzQ8 |

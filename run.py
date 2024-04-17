@@ -83,8 +83,7 @@ def game_over_screen(stdscr, score, username):
     if user_input == ord('p'):
         main_loop(stdscr)
     else:
-        curses.endwin()
-    
+        curses.endwin()    
 
 def main_game(stdscr):
     # Clears the screen
