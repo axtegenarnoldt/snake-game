@@ -71,17 +71,17 @@ def start_area(stdscr):
 def user_name(stdscr):
     stdscr.clear()
     curses.echo() # Enable echoing of characters
-    while True: # Keep prompting until a non-empty name is entered
+    while True: # Keep prompting until a name is entered
         stdscr.addstr(0, 0, "Enter your name: ")
         stdscr.refresh()
         # Get a 15-character string, starting at column 20
         username = stdscr.getstr(0, 20, 15).decode('utf-8')
-        if username.strip(): # Check if the entered name is not empty
+        if username.strip(): # Check if the entered name is empty
             break
         else:
-            stdscr.addstr(1, 0, "Name cannot be empty. Please enter your name.")
+            stdscr.addstr(1, 0, " Please enter your name.")
             stdscr.refresh()
-            time.sleep(1) # Optional: Pause for a moment before re-prompting
+            time.sleep(1)
     return username
 
 
@@ -89,7 +89,7 @@ def game_over_screen(stdscr, score, username):
     stdscr.clear()
     curses.init_pair(2, curses.COLOR_RED, curses.COLOR_BLACK)
     stdscr.addstr(0, 0, r"""
-          ____                         ___   
+          ____                         ___
          / ___| __ _ _ __ ___   ___   / _ \__   _____ _ __
         | |  _ / _` | '_ ` _ \ / _ \ | | | \ \ / / _ \ '__|
         | |_| | (_| | | | | | |  __/ | |_| |\ V /  __/ |
