@@ -1,16 +1,24 @@
 <img src="docs/amiresponsiv.png" alt="image of website on different screens">
 
 # Snake Game
+## Introduciton 
 Welcome to the Snake Game, a classic text-based game brought to life using Python. This project is a simple yet engaging implementation of the timeless Snake game.
+
+The site is live here: <a href="https://pp3-snake-game-967c9062a992.herokuapp.com/">Snake Game</a>
+
 
 ## Contents
 **Table of content:**
+- [Snake Game](#snake-game)
+    - [Introduction](#introduciton)
+- [Contents](#contents)
 - [User Experience](#user-experience)
     - [Site Owner Goals](#site-owner-goals)
     - [User Goals](#user-goals)
 - [Design](#design)
     - [ASCII Art](#ascii-art)
     - [Colors](#colors)
+    - [Flowchart](#flowchart)
 - [Features](#features)
     - [Welcome Screen](#welcome-screen)
     - [Rules Screen](#rules-screen)
@@ -18,13 +26,18 @@ Welcome to the Snake Game, a classic text-based game brought to life using Pytho
     - [Main Game](#main-game)
     - [Live Score](#live-score)
     - [Game Over Screen](#game-over-screen)
+-[Features To Add](#features-to-add)
 - [Testing](#testing)
+    - [CI Python Linter](#ci-python-linter)
+    - [WAVE](#wave)
     - [Lighthouse](#lighthouse)
+- [Bugs](#bugs)
 - [Deployment](#deployment)
     - [Heroku](#heroku)
 - [Credit](#credit)
 
 ## User Experience
+
 ### Site Owner Goals
 The owner's goal is to provide a site were you can have fun and play the classic Snake Game you probably playd when you were younger.
 
@@ -43,6 +56,9 @@ Both the start screen and game over screen displays ASCII art to make it stand o
 I used 7 standerd colors in the curses module, Black, Green, Cyan, Red, Magenta, White and Blue
 
 The start page displays the ASCII and text in a green color to match with the green snake in the game. The food in the game changes colors to make it look more fun and the game over page dispalys the ASCII art and text in a red color.
+
+### Flowchart
+<img src="docs/flowchart.png">
 
 
 ## Fetures
@@ -71,11 +87,24 @@ For a better user experience the player can see the live score at the top left c
 <img src="docs/gameoverscreen.png">
 The game over screen displays ASCII art, the user's name and score. Asks if they want to play again and waits for user input.
 
+## Features To Add
+
+Things I like to add to the game in the future to give a better user experience.
+<ul>
+<li> Highscore page so the user's can compete with each other or themselves. </li>
+<li>Different degrees of difficulty, e.g make the game area smaller after a certen score. </li>
+<li>Allowing the player to choose the color of the snake.</li>
+</ul>
+
 ## Testing
+
+### CI Python Linter
+<img src="docs/pythonlinter.png">
+Validation of Python code in <a href="https://pep8ci.herokuapp.com/">CI Python Linter</a> - No errors
 
 ### WAVE
 <img src="docs/wave.png">
-Accessability testing at https://wave.webaim.org/  
+Accessability testing at <a href="https://wave.webaim.org/">Webaim</a> - NO errors
 
 ### Lighthouse
 Tested the website in lighthouse for desktop.
@@ -83,7 +112,15 @@ Tested the website in lighthouse for desktop.
 <img src="docs/lighthouse.png">
 
 ## Bugs
+ During the development and testings several bugs were discoverd.
 
+ | Bug | Fixed/Unfixed |
+ |-----|---------------|
+ | Snake did not increase it's speed as expected | Fixed |
+ | Snake can "eat" the borders | Unfixed |
+ | User can press Enter-key without entering name | Fixed |
+ | Contrast error on "run program" button in WAVE | Fixed |
+ | To long lines and whitespace in CI python linter | Fixed |
 
 ## Deployment
 
