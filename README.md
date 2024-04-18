@@ -1,6 +1,6 @@
+# Snake Game
 <img src="docs/amiresponsiv.png" alt="image of website on different screens">
 
-# Snake Game
 ## Introduciton 
 Welcome to the Snake Game, a classic text-based game brought to life using Python. This project is a simple yet engaging implementation of the timeless Snake game.
 
@@ -28,6 +28,7 @@ The site is live here: <a href="https://pp3-snake-game-967c9062a992.herokuapp.co
     - [Game Over Screen](#game-over-screen)
 -[Features To Add](#features-to-add)
 - [Testing](#testing)
+    - [Manual Testing](#manual-testing)
     - [CI Python Linter](#ci-python-linter)
     - [WAVE](#wave)
     - [Lighthouse](#lighthouse)
@@ -98,6 +99,23 @@ Things I like to add to the game in the future to give a better user experience.
 
 ## Testing
 
+### Manual Testing
+
+| Test | Step | Result |
+|------|------|--------|
+| Heroku |Open live site | Live site runs as expected |
+| press "r" to view rules | pressed "r" | Shows rules page |
+| Press any key to go back to start menu | tested with different keys | Shows start menu |
+| Press "p" to play game | Pressed "p" | show's next page |
+| Enter name | typing my name and Enter | Starts the game |
+| Enter name | Pressing Enter without typing my name | Ask's me to enter my name again |
+| Arrowkeys | pressing arrowkeys to control the snake | Snake moves as expected |
+| Border | Snake collides with border | Game ends and shows game over screen |
+| snakes body | Snake collides with itself | Game ends and shows game over screen |
+| Live score | Snake eat's food | Live score updates with +1 |
+| New food | Snake eats food | New food shows up in the game area |
+| Play again | Press "p" on game over screen | Shows start menu so I can play again |
+
 ### CI Python Linter
 <img src="docs/pythonlinter.png">
 Validation of Python code in <a href="https://pep8ci.herokuapp.com/">CI Python Linter</a> - No errors
@@ -152,10 +170,12 @@ Before i deployd i to Heroku i used "pip3 freeze > requirements.txt" to add depe
 ## Credit
 
 | Knowledge about | Source |
-| -------------------------- | --------------- | 
+| ----------------|--------|
 | How to make a snake game using curses: Mision     Codigo youtube tutorial | https://www.youtube.com/watch?v=_IKIkRMfZJA |
 | how to make a snake game using curses: Partick Loeber youtube tutorial| https://www.youtube.com/watch?v=M_npdRYD4K0 |
 | how to use colors: | https://www.youtube.com/watch?v=JBE4OwdqzQ8 |
 | ASCII art | https://www.asciiart.eu/text-to-ascii-art |
 | Curses functions | https://docs.python.org/3/library/curses.html |
 | How to split lines in python | https://betterstack.com/community/questions/python-how-to-define-multiline-string/ |
+| ASCII Art | https://www.asciiart.eu/text-to-ascii-art |
+| Lucidchart | https://lucid.co/ |
