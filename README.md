@@ -78,7 +78,7 @@ The user name function prompts the user to enter their name before the game star
 
 ### Main Game 
 <img src="docs/maingamescreen.png">
-When the game starts the user controls the snakes direction with the arrowkeys. Every time the snake eats the food, new food shows up in a random place, live score increses and the snake grows. If the user hits the game borders or itself the game ends.
+When the game starts the user controls the snakes direction with the arrowkeys. Every time the snake eats the food, new food shows up in a random place, live score increases and the snake grows. If the user hits the game borders or itself the game ends.
 
 ### Live Score
 <img src="docs/livescore.png">
@@ -122,7 +122,7 @@ Validation of Python code in <a href="https://pep8ci.herokuapp.com/">CI Python L
 
 ### WAVE
 <img src="docs/wave.png">
-Accessability testing at <a href="https://wave.webaim.org/">Webaim</a> - NO errors
+Accessability testing at <a href="https://wave.webaim.org/">Webaim</a> - No errors
 
 ### Lighthouse
 Tested the website in lighthouse for desktop.
@@ -169,6 +169,8 @@ Before i deployd i to Heroku i used "pip3 freeze > requirements.txt" to add depe
 
 ## Credit
 
+Lucidcart was made at <a href="https://lucid.co/ ">Lucid</a> and ASCII art are from <a href="https://www.asciiart.eu/text-to-ascii-art">ASCII Art Archive</a>.
+
 | Knowledge about | Source |
 | ----------------|--------|
 | How to make a snake game using curses: Mision     Codigo youtube tutorial | https://www.youtube.com/watch?v=_IKIkRMfZJA |
@@ -177,5 +179,3 @@ Before i deployd i to Heroku i used "pip3 freeze > requirements.txt" to add depe
 | ASCII art | https://www.asciiart.eu/text-to-ascii-art |
 | Curses functions | https://docs.python.org/3/library/curses.html |
 | How to split lines in python | https://betterstack.com/community/questions/python-how-to-define-multiline-string/ |
-| ASCII Art | https://www.asciiart.eu/text-to-ascii-art |
-| Lucidchart | https://lucid.co/ |
